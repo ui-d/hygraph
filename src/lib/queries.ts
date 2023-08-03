@@ -3,7 +3,6 @@ import { gql } from 'graphql-request';
 const pageQuery = gql`
   query Page($slug: String!) {
     page(where: { slug: $slug }) {
-      title
       sections {
         ... on Section {
           id
