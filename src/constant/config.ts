@@ -1,5 +1,5 @@
 export const siteConfig = {
-  title: 'Hygraph test project',
-  description: 'Hygraph test project',
+  title: 'Hygraph Test Project',
+  description: 'Hygraph Test Project',
   url: '',
 };
