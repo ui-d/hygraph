@@ -23,7 +23,7 @@ type Block = {
 
 type SectionData = {
   id?: string;
-  block: Block;
+  blocks: Block;
 };
 
 type PageData = {
@@ -58,7 +58,7 @@ const createBlock = (component: ComponentData, key: string): ReactElement => {
 
 const Section: FC<SectionProps> = ({ section }) => (
   <div key={section.id} style={{ border: '1px solid red' }}>
-    {section.block.components.map((component) =>
+    {section.blocks.components.map((component) =>
       createBlock(component, component.id || '')
     )}
   </div>

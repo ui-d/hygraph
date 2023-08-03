@@ -6,22 +6,41 @@ const pageQuery = gql`
       sections {
         ... on Section {
           id
-          block {
-            id
+          blocks {
             components {
               __typename
               ... on Callout {
                 id
                 title
-                stage
+                description
+                actionButton {
+                  id
+                  size
+                  text
+                }
               }
               ... on FeatureSection {
                 id
+                label
                 title
+                description
+                featureActionButton: actionButton {
+                  id
+                  size
+                  text
+                }
               }
               ... on Hero {
                 id
                 title
+                description
+                actionButtons {
+                  ... on Button {
+                    id
+                    size
+                    text
+                  }
+                }
               }
             }
           }
