@@ -8,6 +8,13 @@ export default {
         inter: ['var(--font-inter), sans-serif'],
         'space-grotesk': ['var(--font-space-grotesk), sans-serif'],
       },
+      fontSize: {
+        base: ['1rem', '1.5rem'], // 16px, 24px
+        lg: ['1.125rem', '2.375rem'], // 18px, 38px
+        xl: ['1.25rem', '1.875rem'], // 20px, 30px
+        '2xl': ['1.875rem', '2.375rem'], // 30px, 38px
+        '4xl': ['3.75rem', '4.5rem'], // 60px, 72px
+      },
       colors: {
         white: '#FFFFFF',
         purple: '#7C3AED',
