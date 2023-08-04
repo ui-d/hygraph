@@ -1,35 +1,22 @@
-import { ComponentType, FC, ReactElement } from 'react';
+import { ElementType, FC, ReactElement } from 'react';
 
 import { hygraphClient } from '@/lib/client';
 import { pageQuery, pagesSlugsQuery } from '@/lib/queries';
+import { cn } from '@/lib/utils';
 
 import * as Blocks from '@/components';
 
 type ComponentData = {
   __typename: string;
-  id: string;
-  title?: string;
-  stage?: string;
-};
-
-type BlockComponentProps = ComponentData;
-
-type BlockComponent = ComponentType<BlockComponentProps>;
-
-type Block = {
   id?: string;
-  components: ComponentData[];
 };
 
-type SectionData = {
-  id?: string;
-  blocks: Block;
-};
-
-type PageData = {
-  page: {
-    title: string;
-    sections: SectionData[];
+type SectionProps = {
+  section: {
+    id?: string;
+    blocks: {
+      components: ComponentData[];
+    };
   };
 };
 
@@ -39,25 +26,29 @@ type PageProps = {
   };
 };
 
-type SectionProps = {
-  section: SectionData;
+type PageData = {
+  page: {
+    sections: {
+      id?: string;
+      blocks: {
+        components: ComponentData[];
+      };
+    }[];
+  };
 };
-
-interface BlocksInterface {
-  [key: string]: BlockComponent;
-}
-
-const BlocksComponents = Blocks as BlocksInterface;
 
 const ErrorComponent = () => <div>Error: Block not found</div>;
 
 const createBlock = (component: ComponentData, key: string): ReactElement => {
-  const Component = BlocksComponents[component.__typename] || ErrorComponent;
+  const Component =
+    (Blocks as { [key: string]: ElementType })[component.__typename] ||
+    ErrorComponent;
+
   return <Component key={key} {...component} />;
 };
 
 const Section: FC<SectionProps> = ({ section }) => (
-  <div key={section.id} style={{ border: '1px solid red' }}>
+  <div key={section.id} className={cn('mx-auto max-w-7xl border px-10 py-10')}>
     {section.blocks.components.map((component) =>
       createBlock(component, component.id || '')
     )}
