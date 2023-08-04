@@ -34,7 +34,7 @@ export const Navbar = () => {
             <a className={cn('font-inter text-mediumBlue text-base')} href='#'>
               Log in
             </a>
-            <Button size='sm' text='Sign up' />
+            <Button url='#' size='sm' text='Sign up' />
           </div>
         </div>
       </nav>

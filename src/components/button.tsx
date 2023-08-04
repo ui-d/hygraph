@@ -13,7 +13,7 @@ const buttonVariants = cva(
       },
       size: {
         sm: 'h-11 py-2 px-5',
-        md: 'h-9 px-2 ',
+        md: 'h-11 p-6',
         lg: 'h-11 px-8 ',
       },
     },
@@ -29,13 +29,14 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   size: 'sm' | 'md' | 'lg';
   text: string;
+  url: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, text }) => {
+  ({ className, variant, size, text, url }) => {
     return (
       <Link
-        href='#'
+        href={url}
         className={cn(buttonVariants({ variant, size, className }))}
       >
         {text}
