@@ -1,19 +1,35 @@
+import { cn } from '@/lib/utils';
+
 import Items from './footer-navigation.json';
 
 export const Footer = () => {
   const { items } = Items;
   return (
     <>
-      <nav className='fixed w-full bg-white shadow dark:bg-gray-800'>
-        {items.map((item) => (
-          <a
-            href={item.url}
-            key={item.id}
-            className='px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 dark:text-gray-200 dark:hover:text-white'
-          >
-            {item.name}
-          </a>
-        ))}
+      <nav className={cn('fixed flex h-20 w-full bg-white')}>
+        <div
+          className={cn(
+            'mx-auto flex w-full max-w-7xl items-center justify-between border-t'
+          )}
+        >
+          <p className={cn('font-inter text-lightBlue text-base')}>
+            © 2023 Acme Co. All rights reserved.
+          </p>
+
+          <div className={cn('flex items-center gap-4')}>
+            {items.map((item) => (
+              <a
+                key={item.id}
+                href={item.url}
+                className={cn(
+                  'font-inter text-lightBlue text-base hover:text-gray-900'
+                )}
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+        </div>
       </nav>
     </>
   );

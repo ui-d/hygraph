@@ -2,22 +2,22 @@
   "items": [
     {
       "name": "Home",
-      "url": "/",
+      "url": "/home",
       "id": 1
     },
     {
-      "name": "Features",
-      "url": "#",
+      "name": "About",
+      "url": "/about",
       "id": 2
     },
     {
-      "name": "Pricing",
-      "url": "#",
+      "name": "Services",
+      "url": "/services",
       "id": 3
     },
     {
-      "name": "About",
-      "url": "#",
+      "name": "Contact",
+      "url": "/contact",
       "id": 4
     }
   ]
