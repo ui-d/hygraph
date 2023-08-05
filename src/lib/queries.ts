@@ -71,4 +71,15 @@ const pagesSlugsQuery = gql`
   }
 `;
 
-export { pageQuery, pagesSlugsQuery };
+const pageMetaQuery = gql`
+  query pageMetaQuery($slug: String!) {
+    page(where: { slug: $slug }) {
+      seo {
+        title
+        description
+      }
+    }
+  }
+`;
+
+export { pageMetaQuery, pageQuery, pagesSlugsQuery };

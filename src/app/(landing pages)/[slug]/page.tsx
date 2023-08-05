@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { ElementType, FC, ReactElement } from 'react';
 
 import { hygraphClient } from '@/lib/client';
-import { pageQuery, pagesSlugsQuery } from '@/lib/queries';
+import { pageMetaQuery, pageQuery, pagesSlugsQuery } from '@/lib/queries';
 import { cn } from '@/lib/utils';
 
 import * as Blocks from '@/components';
@@ -24,6 +24,15 @@ type SectionProps = {
 type PageProps = {
   params: {
     slug: string;
+  };
+};
+
+type PageMetadata = {
+  page: {
+    seo?: {
+      title?: string;
+      description?: string;
+    };
   };
 };
 
@@ -89,4 +98,19 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   );
 
   return pages;
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const client = hygraphClient();
+
+  const {
+    page: { seo: meta },
+  } = await client.request<PageMetadata>(pageMetaQuery, {
+    slug: params.slug,
+  });
+
+  return {
+    title: meta?.title || '',
+    description: meta?.description || '',
+  };
 }
