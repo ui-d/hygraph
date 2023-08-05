@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import { ElementType, FC, ReactElement } from 'react';
 
 import { hygraphClient } from '@/lib/client';
@@ -66,6 +67,10 @@ export default async function Page({ params }: PageProps) {
   const { page } = await client.request<PageData>(pageQuery, {
     slug: params.slug,
   });
+
+  if (!page) {
+    notFound();
+  }
 
   return (
     <div>
