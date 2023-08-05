@@ -48,7 +48,12 @@ const createBlock = (component: ComponentData, key: string): ReactElement => {
 };
 
 const Section: FC<SectionProps> = ({ section }) => (
-  <div key={section.id} className={cn('mx-auto max-w-7xl border px-10 py-10')}>
+  <div
+    key={section.id}
+    className={cn(
+      'mx-auto flex max-w-7xl flex-col gap-20 px-8 py-16 md:px-8 md:py-24'
+    )}
+  >
     {section.blocks.components.map((component) =>
       createBlock(component, component.id || '')
     )}
