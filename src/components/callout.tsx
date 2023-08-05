@@ -17,7 +17,7 @@ export const Callout = ({ title, description, actionButton }: CalloutProps) => {
   return (
     <section
       className={cn(
-        'bg-dark-blue flex flex-col justify-between rounded-xl p-16 md:flex-row'
+        'bg-dark-blue flex flex-col justify-between gap-8 rounded-xl px-8 py-8 sm:gap-16 sm:p-16 md:flex-row'
       )}
     >
       <div>
