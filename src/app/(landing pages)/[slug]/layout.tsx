@@ -17,10 +17,10 @@ export default function ComponentsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <body className={cn('bg-extra-light-gray')}>
+    <div className={cn('bg-extra-light-gray')}>
       <Navbar />
       {children}
       <Footer />
-    </body>
+    </div>
   );
 }
