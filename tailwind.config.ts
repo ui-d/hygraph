@@ -10,7 +10,7 @@ export default {
       },
       fontSize: {
         base: ['1rem', '1.5rem'], // 16px, 24px
-        'lg-narrow': ['1.125rem', '1.75rem'], // 20px, 28px
+        'lg-tight': ['1.125rem', '1.75rem'], // 20px, 28px
         lg: ['1.125rem', '2.375rem'], // 18px, 38px
         xl: ['1.25rem', '1.875rem'], // 20px, 30px
         '2xl': ['1.875rem', '2.375rem'], // 30px, 38px
