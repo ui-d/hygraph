@@ -16,17 +16,17 @@ type HeroProps = {
 
 export const Hero = ({ title, description, actionButtons }: HeroProps) => {
   return (
-    <section className={cn('pt-20 text-center')}>
+    <section className={cn('pt-16 text-center sm:pt-20')}>
       <h1
         className={cn(
-          'font-inter text-darker-blue pb-6 text-3xl font-semibold tracking-tight md:text-4xl'
+          'font-inter text-darker-blue pb-4 text-3xl font-semibold tracking-tight sm:pb-6 md:text-4xl'
         )}
       >
         {title}
       </h1>
       <p
         className={cn(
-          'font-inter text-light-blue mx-auto max-w-3xl pb-12 text-xl'
+          'font-inter !text-medium-blue text-lg-tight mx-auto max-w-3xl pb-7 sm:pb-12 sm:text-xl'
         )}
       >
         {description}
@@ -37,7 +37,7 @@ export const Hero = ({ title, description, actionButtons }: HeroProps) => {
             key={actionButton.id}
             size={actionButton.size}
             text={actionButton.text}
-            className={cn('w-full md:w-auto')}
+            className={cn('w-full sm:w-auto')}
             url='#'
           />
         ))}
