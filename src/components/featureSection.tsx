@@ -37,10 +37,23 @@ const YouTubeEmbed = ({ link }: YoutubeType) => {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        aspectRatio: '16 / 9', // aspect-ratio is set to 16:9
+        overflow: 'hidden',
+      }}
+    >
       <iframe
-        width='480'
-        height='320'
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          border: 0,
+        }}
         src={`https://www.youtube.com/embed/${videoId}`}
         frameBorder='0'
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -62,10 +75,10 @@ export const FeatureSection = ({
   return (
     <section
       className={cn(
-        'flex flex-col items-center justify-between gap-24 md:flex-row'
+        'items-center justify-between gap-10 md:flex md:flex-row lg:gap-24'
       )}
     >
-      <div className={cn('flex-1', { 'order-2': reversed })}>
+      <div className={cn('flex-1 pb-10 md:pb-0', { 'order-2': reversed })}>
         {label && (
           <p className={cn('font-space-grotesk text-purple text-lg font-bold')}>
             {label}
@@ -78,7 +91,7 @@ export const FeatureSection = ({
         >
           {title}
         </h2>
-        <p className={cn('text-medium-blue font-inter text-lg-narrow pb-7')}>
+        <p className={cn('!text-medium-blue font-inter text-lg-tight pb-7')}>
           {description}
         </p>
         {featureActionButton && (
@@ -92,24 +105,29 @@ export const FeatureSection = ({
         )}
       </div>
       {media && (
-        <figure
-          className={cn('bg-gray flex flex-1 justify-center rounded-xl py-10', {
-            'order-1': reversed,
-          })}
-        >
-          {'link' in media ? (
-            <YouTubeEmbed link={media.link} />
-          ) : (
-            media.image && (
-              <Image
-                src={media.image.url}
-                alt='Feature Image'
-                width={480}
-                height={320}
-              />
-            )
-          )}
-        </figure>
+        <div className={cn('flex-1')}>
+          <figure
+            className={cn(
+              'md:bg-gray flex justify-center rounded-xl md:px-10 md:py-10',
+              {
+                'order-1': reversed,
+              }
+            )}
+          >
+            {'link' in media ? (
+              <YouTubeEmbed link={media.link} />
+            ) : (
+              media.image && (
+                <Image
+                  src={media.image.url}
+                  alt='Feature Image'
+                  width={480}
+                  height={320}
+                />
+              )
+            )}
+          </figure>
+        </div>
       )}
     </section>
   );
