@@ -15,7 +15,11 @@ type CalloutProps = {
 };
 export const Callout = ({ title, description, actionButton }: CalloutProps) => {
   return (
-    <section className={cn('bg-darkBlue flex justify-between rounded-xl p-16')}>
+    <section
+      className={cn(
+        'bg-dark-blue flex flex-col justify-between rounded-xl p-16 md:flex-row'
+      )}
+    >
       <div>
         <h2 className={cn('font-inter pb-4 text-2xl font-semibold text-white')}>
           {title}
@@ -26,6 +30,7 @@ export const Callout = ({ title, description, actionButton }: CalloutProps) => {
         text={actionButton.text}
         id={actionButton.id}
         size={actionButton.size}
+        className={cn('w-full sm:w-auto')}
         url='#'
       />
     </section>
