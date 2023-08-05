@@ -13,10 +13,14 @@ export const Footer = () => {
       <section className={cn('flex w-full')}>
         <div
           className={cn(
-            'border-light-gray mx-auto flex w-full flex-col-reverse items-center justify-between gap-8 border-t py-8 md:flex-row'
+            'border-light-gray mx-auto flex w-full flex-col-reverse items-center justify-between gap-12 border-t py-8 sm:gap-8 md:flex-row'
           )}
         >
-          <p className={cn('font-inter text-light-blue text-base')}>
+          <p
+            className={cn(
+              'font-inter text-light-blue text-center text-base sm:text-left'
+            )}
+          >
             © 2023 Acme Co. All rights reserved.
           </p>
 
