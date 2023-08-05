@@ -6,19 +6,19 @@
       "id": 1
     },
     {
-      "name": "About",
-      "url": "/about",
+      "name": "Features",
+      "url": "#",
       "id": 2
     },
     {
-      "name": "Services",
-      "url": "/services",
-      "id": 3
+      "name": "Pricing",
+      "url": "#",
+      "id": 4
     },
     {
-      "name": "Contact",
-      "url": "/contact",
-      "id": 4
+      "name": "About",
+      "url": "#",
+      "id": 5
     }
   ]
 }
