@@ -10,20 +10,24 @@ export default {
       },
       fontSize: {
         base: ['1rem', '1.5rem'], // 16px, 24px
+        'lg-narrow': ['1.125rem', '1.75rem'], // 20px, 28px
         lg: ['1.125rem', '2.375rem'], // 18px, 38px
         xl: ['1.25rem', '1.875rem'], // 20px, 30px
         '2xl': ['1.875rem', '2.375rem'], // 30px, 38px
+        '3xl': ['2.25rem', '2.75rem'], // 36px, 44px
         '4xl': ['3.75rem', '4.5rem'], // 60px, 72px
       },
       colors: {
         white: '#FFFFFF',
         purple: '#7C3AED',
-        darkBlue: '#1E293B',
-        mediumBlue: '#334155',
-        lightBlue: '#64748B',
-        lightGray: '#E4E7EC',
+        'medium-blue': '#334155',
+        'dark-blue': '#1E293B',
+        'darker-blue': '#0F172A',
+        'light-blue': '#64748B',
+        'extra-light-gray': '#F8FAFC',
+        'light-gray': '#E4E7EC',
+        gray: '#F1F5F9',
         black: '#000000',
-        darkerBlue: '#0F172A',
       },
     },
     keyframes: {
