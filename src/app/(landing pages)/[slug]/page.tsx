@@ -51,7 +51,7 @@ const Section: FC<SectionProps> = ({ section }) => (
   <div
     key={section.id}
     className={cn(
-      'mx-auto flex max-w-7xl flex-col gap-20 px-8 py-16 md:px-8 md:py-24'
+      'mx-auto flex max-w-7xl flex-col gap-16 px-8 py-12 md:px-8 md:py-24'
     )}
   >
     {section.blocks.components.map((component) =>
