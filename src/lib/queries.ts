@@ -24,6 +24,19 @@ const pageQuery = gql`
                 label
                 title
                 description
+                media {
+                  ... on Image {
+                    id
+                    image {
+                      url
+                    }
+                  }
+                  ... on YoutubeVideo {
+                    id
+                    link
+                  }
+                }
+                reversed
                 featureActionButton: actionButton {
                   id
                   size
