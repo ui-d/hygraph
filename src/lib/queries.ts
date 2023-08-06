@@ -1,7 +1,7 @@
 import { gql } from 'graphql-request';
 
-const pageQuery = gql`
-  query Page($slug: String!) {
+const pageData = gql`
+  query pageData($slug: String!) {
     page(where: { slug: $slug }) {
       sections {
         ... on Section {
@@ -63,7 +63,7 @@ const pageQuery = gql`
   }
 `;
 
-const pagesSlugsQuery = gql`
+const pagesSlugs = gql`
   {
     pages {
       slug
@@ -71,8 +71,8 @@ const pagesSlugsQuery = gql`
   }
 `;
 
-const pageMetaQuery = gql`
-  query pageMetaQuery($slug: String!) {
+const pageMeta = gql`
+  query pageMeta($slug: String!) {
     page(where: { slug: $slug }) {
       seo {
         title
@@ -82,4 +82,4 @@ const pageMetaQuery = gql`
   }
 `;
 
-export { pageMetaQuery, pageQuery, pagesSlugsQuery };
+export { pageData, pageMeta, pagesSlugs };

@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { ElementType, FC, ReactElement } from 'react';
 
 import { hygraphClient } from '@/lib/client';
-import { pageMetaQuery, pageQuery, pagesSlugsQuery } from '@/lib/queries';
+import { pageData, pageMeta, pagesSlugs } from '@/lib/queries';
 import { cn } from '@/lib/utils';
 
 import * as Blocks from '@/components';
@@ -73,7 +73,7 @@ const Section: FC<SectionProps> = ({ section }) => (
 export default async function Page({ params }: PageProps) {
   const client = hygraphClient();
 
-  const { page } = await client.request<PageData>(pageQuery, {
+  const { page } = await client.request<PageData>(pageData, {
     slug: params.slug,
   });
 
@@ -94,7 +94,7 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const client = hygraphClient();
 
   const { pages } = await client.request<{ pages: { slug: string }[] }>(
-    pagesSlugsQuery
+    pagesSlugs
   );
 
   return pages;
@@ -105,7 +105,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   const {
     page: { seo: meta },
-  } = await client.request<PageMetadata>(pageMetaQuery, {
+  } = await client.request<PageMetadata>(pageMeta, {
     slug: params.slug,
   });
 
