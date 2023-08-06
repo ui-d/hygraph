@@ -21,7 +21,7 @@ export const Navbar = () => {
             <div className={cn('flex-shrink-0')}>
               <Link href='/'>
                 <Image
-                  alt='Company Name Logo'
+                  alt='Logo'
                   src='/svg/Logo.svg'
                   width={100}
                   height={100}
