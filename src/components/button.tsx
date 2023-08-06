@@ -32,18 +32,21 @@ export interface ButtonProps
   url: string;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, text, url }) => {
-    return (
-      <Link
-        href={url}
-        className={cn(buttonVariants({ variant, size, className }))}
-      >
-        {text}
-      </Link>
-    );
-  }
-);
-Button.displayName = 'Button';
+const Button: React.FC<ButtonProps> = ({
+  className,
+  variant,
+  size,
+  text,
+  url,
+}) => {
+  return (
+    <Link
+      href={url}
+      className={cn(buttonVariants({ variant, size, className }))}
+    >
+      {text}
+    </Link>
+  );
+};
 
 export { Button, buttonVariants };
