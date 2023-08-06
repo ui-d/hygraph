@@ -2,6 +2,10 @@
 
 A dynamic landing page built using Next.js 13 and Tailwind CSS. With the integration of the Hygraph CMS, content editors can seamlessly add Feature Sections and Callouts.
 
+## Demo
+
+[https://hygraph-mu.vercel.app/test-project](https://hygraph-mu.vercel.app/test-project)
+
 ## Overview
 
 The landing page has a hierarchical structure:
