@@ -10,7 +10,7 @@ export const Footer = () => {
   const { items } = navigationItems;
   return (
     <Container>
-      <section className={cn('flex w-full')}>
+      <footer className={cn('flex w-full')}>
         <div
           className={cn(
             'border-light-gray mx-auto flex w-full flex-col-reverse items-center justify-between gap-12 border-t py-8 sm:gap-8 md:flex-row'
@@ -24,21 +24,24 @@ export const Footer = () => {
             © 2023 Acme Co. All rights reserved.
           </p>
 
-          <div className={cn('flex items-center gap-4')}>
-            {items.map((item) => (
-              <Link
-                key={item.id}
-                href={item.url}
-                className={cn(
-                  'font-inter text-light-blue hover:text-medium-blue text-base'
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
+          <nav>
+            <ul className={cn('flex items-center gap-4')}>
+              {items.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={item.url}
+                    className={cn(
+                      'font-inter text-light-blue hover:text-medium-blue text-base'
+                    )}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
-      </section>
+      </footer>
     </Container>
   );
 };
