@@ -10,39 +10,52 @@ import Items from './navbar-navigation.json';
 
 export const Navbar = () => {
   const { items } = Items;
+
   return (
-    <nav className={cn('border-light-gray fixed flex w-full border bg-white')}>
+    <header
+      className={cn('border-light-gray fixed flex w-full border bg-white')}
+    >
       <Container>
-        <div className={cn('flex h-20 w-full items-center justify-between')}>
+        <nav className={cn('flex h-20 w-full items-center justify-between')}>
           <div className={cn('flex items-center gap-3')}>
-            <Link href='/'>
-              <Image alt='logo' src='/svg/Logo.svg' width={100} height={100} />
-            </Link>
-            {items.map((item) => (
-              <a
-                href={item.url}
-                key={item.id}
-                className={cn(
-                  'text-medium-blue font-inter hover:bg-gray hidden rounded-md px-3 py-2 text-base hover:text-gray-800 md:block'
-                )}
-              >
-                {item.name}
-              </a>
-            ))}
+            <div className={cn('flex-shrink-0')}>
+              <Link href='/'>
+                <Image
+                  alt='Company Name Logo'
+                  src='/svg/Logo.svg'
+                  width={100}
+                  height={100}
+                />
+              </Link>
+            </div>
+            <ul className={cn('flex gap-3')}>
+              {items.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={item.url}
+                    className={cn(
+                      'text-medium-blue font-inter hover:bg-gray hidden rounded-md px-3 py-2 text-base hover:text-gray-800 md:block'
+                    )}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className={cn('flex items-center gap-4')}>
-            <a
+            <Link
               className={cn(
-                'font-inter text-medium-blue hover:bg-gray hidden rounded-md px-3 py-2 text-base md:block'
+                'font-inter text-medium-blue hover:bg-gray whitespace-nowrap rounded-md px-3 py-2 text-base md:block'
               )}
               href='#'
             >
               Log in
-            </a>
+            </Link>
             <Button url='#' size='sm' text='Sign up' />
           </div>
-        </div>
+        </nav>
       </Container>
-    </nav>
+    </header>
   );
 };
