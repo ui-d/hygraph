@@ -26,6 +26,7 @@ export const Navbar = () => {
                   width={100}
                   height={100}
                   style={{ width: 'auto' }}
+                  priority={true}
                 />
               </Link>
             </div>
