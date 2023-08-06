@@ -47,13 +47,13 @@ type PageData = {
   };
 };
 
-const ErrorComponent = () => <div>Error: Block not found</div>;
+type BlockMap = { [key: string]: ElementType };
+
+const ErrorComponent: FC = () => <div>Error: Block not found</div>;
 
 const createBlock = (component: ComponentData, key: string): ReactElement => {
   const Component =
-    (Blocks as { [key: string]: ElementType })[component.__typename] ||
-    ErrorComponent;
-
+    (Blocks as BlockMap)[component.__typename] || ErrorComponent;
   return <Component key={key} {...component} />;
 };
 
@@ -70,47 +70,65 @@ const Section: FC<SectionProps> = ({ section }) => (
   </div>
 );
 
-export default async function Page({ params }: PageProps) {
-  const client = hygraphClient();
+const client = hygraphClient();
 
-  const { page } = await client.request<PageData>(pageData, {
-    slug: params.slug,
-  });
+export default async function Page({
+  params,
+}: PageProps): Promise<ReactElement | void> {
+  try {
+    const { page } = await client.request<PageData>(pageData, {
+      slug: params?.slug ?? '',
+    });
 
-  if (!page) {
-    notFound();
+    if (!page) {
+      notFound();
+      return;
+    }
+
+    return (
+      <div>
+        {page.sections?.map((section) => (
+          <Section key={section.id ?? ''} section={section} />
+        ))}
+      </div>
+    );
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to fetch page data', error);
+    throw error; // Or handle the error more gracefully for the user.
   }
-
-  return (
-    <div>
-      {page?.sections?.map((section) => (
-        <Section key={section.id || ''} section={section} />
-      ))}
-    </div>
-  );
 }
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const client = hygraphClient();
-
-  const { pages } = await client.request<{ pages: { slug: string }[] }>(
-    pagesSlugs
-  );
-
-  return pages;
+  try {
+    const { pages } = await client.request<{ pages: { slug: string }[] }>(
+      pagesSlugs
+    );
+    return pages;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to generate static params', error);
+    throw error; // Or handle this error more gracefully.
+  }
 }
 
-export async function generateMetadata({ params }: PageProps) {
-  const client = hygraphClient();
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<{ title: string; description: string }> {
+  try {
+    const {
+      page: { seo: meta },
+    } = await client.request<PageMetadata>(pageMeta, {
+      slug: params?.slug,
+    });
 
-  const {
-    page: { seo: meta },
-  } = await client.request<PageMetadata>(pageMeta, {
-    slug: params.slug,
-  });
-
-  return {
-    title: meta?.title || '',
-    description: meta?.description || '',
-  };
+    return {
+      title: meta?.title ?? '',
+      description: meta?.description ?? '',
+    };
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to generate metadata', error);
+    throw error; // Or handle this error more gracefully.
+  }
 }
