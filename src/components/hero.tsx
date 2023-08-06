@@ -16,7 +16,7 @@ type HeroProps = {
 
 export const Hero = ({ title, description, actionButtons }: HeroProps) => {
   return (
-    <section className={cn('pt-16 text-center sm:pt-20')}>
+    <section className={cn('text-center sm:pt-0')}>
       <h1
         className={cn(
           'font-inter text-darker-blue pb-4 text-3xl font-semibold tracking-tight sm:pb-6 md:text-4xl'
@@ -31,7 +31,7 @@ export const Hero = ({ title, description, actionButtons }: HeroProps) => {
       >
         {description}
       </p>
-      <div className={cn('flex items-center justify-center gap-5')}>
+      <div className={cn('flex flex-wrap items-center justify-center gap-5')}>
         {actionButtons?.map((actionButton) => (
           <Button
             key={actionButton.id}

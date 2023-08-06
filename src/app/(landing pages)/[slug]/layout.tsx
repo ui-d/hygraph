@@ -13,8 +13,10 @@ export default function ComponentsLayout({
   return (
     <div className={cn('bg-extra-light-gray')}>
       <Navbar />
-      {children}
-      <Footer />
+      <div className={cn('pt-20')}>
+        {children}
+        <Footer />
+      </div>
     </div>
   );
 }
