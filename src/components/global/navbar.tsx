@@ -25,6 +25,7 @@ export const Navbar = () => {
                   src='/svg/Logo.svg'
                   width={100}
                   height={100}
+                  style={{ width: 'auto' }}
                 />
               </Link>
             </div>

@@ -116,6 +116,7 @@ export const FeatureSection = ({
                   alt='Feature Image'
                   width={480}
                   height={320}
+                  priority={true}
                 />
               )
             )}
