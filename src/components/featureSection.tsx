@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { cn } from '@/lib/utils';
+import { cn, extractYouTubeID } from '@/lib/utils';
 
 import { Button } from '@/components/button';
 
@@ -28,13 +28,7 @@ type FeatureSectionProps = {
 };
 
 const YouTubeEmbed = ({ link }: YoutubeType) => {
-  let videoId = '';
-
-  if (link.includes('youtu.be')) {
-    videoId = link.split('youtu.be/')[1];
-  } else if (link.includes('youtube.com')) {
-    videoId = new URL(link).searchParams.get('v') || '';
-  }
+  const videoId = extractYouTubeID(link);
 
   return (
     <div
