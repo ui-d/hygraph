@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 
 import { Button } from '@/components/button';
 
-type ActionButton = {
+type ActionButtonProps = {
   id: string;
   size: 'sm' | 'md' | 'lg';
   text: string;
@@ -11,7 +11,7 @@ type ActionButton = {
 type CalloutProps = {
   title: string;
   description: string;
-  actionButton: ActionButton;
+  actionButton: ActionButtonProps;
 };
 export const Callout = ({ title, description, actionButton }: CalloutProps) => {
   return (
