@@ -114,17 +114,19 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<{ title: string; description: string }> {
+}: PageProps): Promise<{ title?: string; description?: string }> {
   try {
-    const {
-      page: { seo: meta },
-    } = await client.request<PageMetadata>(pageMeta, {
+    const { page } = await client.request<PageMetadata>(pageMeta, {
       slug: params?.slug,
     });
 
+    if (!page || !page.seo) {
+      return {};
+    }
+
     return {
-      title: meta?.title ?? '',
-      description: meta?.description ?? '',
+      title: page.seo.title,
+      description: page.seo.description,
     };
   } catch (error) {
     // eslint-disable-next-line no-console
