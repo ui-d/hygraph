@@ -3,7 +3,6 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/button';
 
 type ActionButtonProps = {
-  id: string;
   size: 'sm' | 'md' | 'lg';
   text: string;
 };
@@ -28,7 +27,6 @@ export const Callout = ({ title, description, actionButton }: CalloutProps) => {
       </div>
       <Button
         text={actionButton.text}
-        id={actionButton.id}
         size={actionButton.size}
         className={cn('w-full sm:w-auto')}
         url='#'
