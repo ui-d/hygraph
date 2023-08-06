@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import * as React from 'react';
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
@@ -18,9 +19,9 @@ export default function NotFound() {
           <h1 className='font-inter mt-8 text-4xl md:text-6xl'>
             Page Not Found
           </h1>
-          <a className='font-space-grotesk' href='/'>
+          <Link className='font-space-grotesk' href='/'>
             Back to home
-          </a>
+          </Link>
         </div>
       </section>
     </main>
